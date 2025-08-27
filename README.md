@@ -18,7 +18,7 @@ A step-by-step guide to set up **Gensyn Minecraft BlockAssist** in Windows Subsy
 ## 1️⃣ Install VcXsrv (X Server for Windows) 🖥️
 
 1. [Download VcXsrv](https://sourceforge.net/projects/vcxsrv/)  
-    ![VcXsrv Screenshot](https://github.com/gasoline2255/Gensyn-Blockassist-WSL-Guide/blob/d418a853957c0205d967b244e878cce093e85ee2/Screenshot%202025-08-09%20051036.png)
+    ![VcXsrv Screenshot](https://github.com/HustleAirdrops/Gensyn-Block-Role-Guide/blob/d418a853957c0205d967b244e878cce093e85ee2/Screenshot%202025-08-09%20051036.png)
 
 2. Run the installer and complete the installation.
 
@@ -154,7 +154,7 @@ python3 run.py
 
 **7.** When prompted, paste your **Hugging Face token**.
 
-![Hugging Face Token Prompt](https://github.com/gasoline2255/Gensyn-Blockassist-WSL-Guide/blob/60414bc20fe061df0f35536dd29fc85d0459e285/Screenshot%202025-08-09%20044704.png)
+![Hugging Face Token Prompt](https://github.com/HustleAirdrops/Gensyn-Block-Role-Guide/blob/60414bc20fe061df0f35536dd29fc85d0459e285/Screenshot%202025-08-09%20044704.png)
 
 ---
 
