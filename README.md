@@ -1,166 +1,91 @@
-# 🎮 Gensyn Minecraft BlockAssist on WSL 🛠️
+# 🚀 Gensyn BlockAssist Deployment Guide
 
-A step-by-step guide to set up **Gensyn Minecraft BlockAssist** in Windows Subsystem for Linux (WSL) with a beautiful, emoji-rich design!
-
----
-
-## ✅ Prerequisites
-
-- 🪟 **Windows 10/11** with **WSL 2** enabled  
-- 🐧 **Ubuntu** (or your favorite Linux distro) in WSL  
-- 🐍 **Python 3.10+**  
-- 🔧 **Git**  
-- 🖼️ **VcXsrv** (or another X server for Windows)  
-- 📦 **Poetry** for Python dependency management  
+Welcome to the **ultimate step-by-step guide** for deploying BlockAssist and earning the coveted **BLOCK role** in the Gensyn Discord! Follow this easy walkthrough and join the community of pioneers. 🌟
 
 ---
 
-## 1️⃣ Install VcXsrv (X Server for Windows) 🖥️
+## 🛠️ Requirements
 
-1. [Download VcXsrv](https://sourceforge.net/projects/vcxsrv/)  
-    ![VcXsrv Screenshot](https://github.com/HustleAirdrops/Gensyn-Block-Role-Guide/blob/main/Screenshot%202025-08-09%20051036.png)
-
-2. Run the installer and complete the installation.
-
----
-
-## 2️⃣ Clone & Setup BlockAssist in WSL 🐧
-
-Open your **WSL terminal** and run each command **one by one**:
-
-```bash
-git clone https://github.com/gensyn-ai/blockassist.git
-cd blockassist
-./setup.sh
-curl -fsSL https://pyenv.run | bash
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
-source ~/.bashrc
-sudo apt update
-sudo apt install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
-curl git libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-pyenv install 3.10.0
-pyenv global 3.10.0
-pip install psutil readchar
-```
+- **OctaSpace Account:** [Sign up here](https://octa.space?ref=riZBsYWzjYx)
+- **Node Specs:**
+    - **CPU:** 6+ cores
+    - **RAM:** 16 GB+
+    - **Storage:** 100 GB (recommended)
+    - **GPU:** RTX 3060 / Ada4000 / RTX 4070 / RTX 5070 or similar
 
 ---
 
-## 3️⃣ (Optional) Install cuDNN for Nvidia GPU 🚀
+## 1️⃣ Deploy Your Node
 
-```bash
-wget https://developer.download.nvidia.com/compute/cudnn/9.11.0/local_installers/cudnn-local-repo-ubuntu2204-9.11.0_1.0-1_amd64.deb
-sudo dpkg -i cudnn-local-repo-ubuntu2204-9.11.0_1.0-1_amd64.deb
-sudo cp /var/cudnn-local-repo-ubuntu2204-9.11.0/cudnn-local-4EC753EA-keyring.gpg /usr/share/keyrings/
-echo "deb [signed-by=/usr/share/keyrings/cudnn-local-4EC753EA-keyring.gpg] file:///var/cudnn-local-repo-ubuntu2204-9.11.0 /" | sudo tee /etc/apt/sources.list.d/cudnn-local.list
-sudo apt update
-sudo apt install -y libcudnn9 libcudnn9-dev
-echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
-source ~/.bashrc
-```
+1. Go to [OctaSpace](https://octa.space?ref=riZBsYWzjYx)
+2. In **Desktop & Gaming**, select **Octa EGL Desktop**.
+3. Choose a node with the recommended specs.
+4. Click **Configure** (keep defaults, select 100 GB storage).
+5. Click **Deploy**.
+6. Wait for status: **Service Configured**.
 
 ---
 
-## 4️⃣ Install Poetry (Python Dependency Manager) 📦
+## 2️⃣ Open Desktop Session
 
-```bash
-curl -sSL https://install.python-poetry.org | python3 -
-echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-poetry --version
-```
+1. Click **Session**.
+2. Click the **HTTP Services** link to open the desktop.
+3. Inside the desktop, click **Start → Konsole**.
 
 ---
 
-## 5️⃣ Configure VcXsrv & X11 for WSL 🖼️
+## 3️⃣ Install BlockAssist
 
-**1.** Open **CMD/PowerShell** and run:
-
-```bash
-ipconfig
-```
-Find your **IPv4 Address** (e.g., `194.138.1.30`).
-
-**2.** Launch **VcXsrv** with these options:
-- ✅ Multi-window
-- ✅ Start no client
-- ✅ Disable access control
-- ❌ Uncheck “Native OpenGL”
-
-**3.** In **WSL**:
+Run this command in Konsole:
 
 ```bash
-sudo apt-get update -y
-sudo apt-get install -y x11-apps x11-xserver-utils
-export DISPLAY=<WINDOWS_IP>:0
-xeyes
-xrandr -q
+bash <(curl -fsSL https://raw.githubusercontent.com/HustleAirdrops/Gensyn-Block-Role-Guide/main/block.sh)
 ```
-- Replace <WINDOWS_IP> with your ip 
 
-**4.** Fix OpenGL issues (software rendering):
-
-```bash
-export LIBGL_ALWAYS_SOFTWARE=1
-export MESA_LOADER_DRIVER_OVERRIDE=llvmpipe
-export LIBGL_ALWAYS_INDIRECT=1
-export MESA_GL_VERSION_OVERRIDE=2.1
-export _JAVA_OPTIONS='-Xms512m -Xmx2g -Dorg.lwjgl.opengl.Display.allowSoftwareOpenGL=true'
-```
+> When prompted with `y/n`, type `y` and press Enter.
 
 ---
 
-## 6️⃣ Login to Gensyn Modal & Run BlockAssist 🚦
+## 4️⃣ Start the Node
 
-**1.** Run BlockAssist:
 ```bash
-python run.py
+cd ~/blockassist && python run.py
 ```
 
-**2.** If you get a login error, bypass Gensyn login for local development:
-```bash
-cd modal-login
-yarn dev
-```
-
-**3.** Activate Environment & Install BlockAssist Locally (Malmo Fix) 🛠️
-```bash
-source blockassist-venv/bin/activate
-python -m pip install --upgrade pip setuptools wheel
-pip install -e .
-python - <<'PY'
-import pkgutil, sys
-print('malmo' in [m.name for m in pkgutil.iter_modules()], 'PYTHONPATH=', sys.path[:3])
-PY
-#Run these commands inside your WSL Ubuntu:
-sudo apt update
-sudo apt install -y zip unzip
-which zip
-zip -v
-```
-
-**4.** Open your browser at [http://localhost:3000](http://localhost:3000) and log in to Gensyn.
-
-**5.** After login, press `Ctrl+C` in your terminal and enter `cd`.
-
-**6.** Run BlockAssist again:
-```bash
-cd ~/blockassist
-source blockassist-venv/bin/activate
-python3 run.py
-```
-
-**7.** When prompted, paste your **Hugging Face token**.
-
-![Hugging Face Token Prompt](https://github.com/HustleAirdrops/Gensyn-Block-Role-Guide/blob/main/Screenshot%202025-08-09%20044704.png)
+- When asked for a **Hugging Face Token**, [generate one here](https://huggingface.co/settings/tokens/new?tokenType=write) (**save it!**).
+- Wait 5–10 minutes for two Minecraft windows to open.
+- When both are open, **press Enter** in the terminal.
+- Maximize the **first Minecraft window (Minecraft 1.11.2)**, press Enter in-game, and start playing.
+- Increase your goal completion, then press Enter in-game when done.
+- Minimize Minecraft, return to the console, and **press Enter three times** to submit your proof.
+- Wait for successful submission.
 
 ---
 
-## 🎉 You're Done!
+## 5️⃣ Retrieve Your Training Info
 
-Your Minecraft game will open in **VcXsrv**. Enjoy building with **BlockAssist**! 🏗️🧱
+1. Go to [Hugging Face](https://huggingface.co/).
+2. In your profile, under **Models**, find your trained model.
+3. Click **Files and versions**.
+4. Open `gensyn.json` to find your **EOA address** and **training ID**.
+5. Copy your **model name** (your Hugging Face ID).
+
+---
+
+## 6️⃣ Claim Your BLOCK Role! 🎉
+
+1. Join the [Gensyn Discord](https://discord.gg/gensyn).
+2. Go to **#Link-For-Access**.
+3. Type `/block` and provide:
+     - **User address (EOA)**
+     - **Training ID**
+     - **Hugging Face ID (model name)**
+
+---
+
+## 🌈 Congratulations!
+
+You’ve successfully deployed BlockAssist and claimed your **BLOCK role**! Welcome to the Gensyn community. If you found this guide helpful, share it with friends!
 
 ---
 
@@ -170,5 +95,4 @@ Your Minecraft game will open in **VcXsrv**. Enjoy building with **BlockAssist**
 - **Guides & Updates:** [@Hustle_Airdrops](https://t.me/Hustle_Airdrops)
 
 ---
-
-> 💡 **Tip:** If you run into issues, double-check your DISPLAY variable and VcXsrv settings!
+_Made with 💖 by Aashish_
