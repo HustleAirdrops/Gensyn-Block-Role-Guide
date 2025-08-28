@@ -6,7 +6,7 @@ Welcome to the **ultimate step-by-step guide** for deploying BlockAssist and ear
 
 ## 🛠️ Requirements
 
-- **OctaSpace Account:** [Sign up here](https://octa.space?ref=riZBsYWzjYx)
+- **OctaSpace Account:** [Sign up here](https://octa.space?ref=r2Zb93DoDm8)
 - **Node Specs:**
     - **CPU:** 6+ cores
     - **RAM:** 16 GB+
