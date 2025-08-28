@@ -89,8 +89,6 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 echo ""
 echo "✅ BlockAssist environment ready."
-echo "👉 Launching BlockAssist now..."
+echo "👉 Next step: run BlockAssist manually:"
+echo "cd ~/blockassist && python run.py"
 
-# === Run BlockAssist ===
-cd "$REPO_DIR"
-python run.py
