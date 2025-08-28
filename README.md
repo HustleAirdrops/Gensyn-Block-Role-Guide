@@ -17,7 +17,7 @@ Welcome to the **ultimate step-by-step guide** for deploying BlockAssist and ear
 
 ## 1️⃣ Deploy Your Node
 
-1. Go to [OctaSpace](https://octa.space?ref=riZBsYWzjYx)
+1. Go to [OctaSpace](https://octa.space?ref=r2Zb93DoDm8)
 2. In **Desktop & Gaming**, select **Octa EGL Desktop**.
 3. Choose a node with the recommended specs.
 4. Click **Configure** (keep defaults, select 100 GB storage).
